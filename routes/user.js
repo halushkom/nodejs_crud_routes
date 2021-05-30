@@ -1,12 +1,6 @@
 var express = require('express');
 var router = express.Router();
-const mysql = require('mysql');
-const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'mykola',
-  password: '123456',
-  database: 'users'
-})
+let connection = require('../config')
 connection.connect(err => {
   if (err) {
     console.log(err)
@@ -84,6 +78,7 @@ router.post('/', (req, res) => {
   connection.query(newDBRecord, (err, result) => {
     if (err) throw err
     console.log("1 record inserted");
+    res.json({ error: false, message: "User added successfully!", data: [req.body.name, req.body.lastName] });
   })
   connection.end()
 
@@ -120,6 +115,7 @@ router.put('/:id', (req, res) => {
   connection.query(updateDBRecord, (err, result) => {
     if (err) throw err
     console.log(`${result.affectedRows} record inserted`);
+    res.json({ error: false, message: "User added successfully!", data: [req.body.name, req.body.lastName] });
   })
 })
 // Delete user by id
@@ -135,7 +131,8 @@ router.delete('/:id', (req, res) => {
   let deleteDBRecord = `DELETE FROM users WHERE id = '${req.params.id}'`;
   connection.query(deleteDBRecord, (err, result) => {
     if (err) throw err
-    console.log(`${result.affectedRows} record has deleted`);
+    console.log(`${result.affectedRows} record has been deleted`);
+    res.status(200).send('OK')
   })
 })
 
