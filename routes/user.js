@@ -115,7 +115,7 @@ router.put('/:id', (req, res) => {
   connection.query(updateDBRecord, (err, result) => {
     if (err) throw err
     console.log(`${result.affectedRows} record inserted`);
-    res.json({ error: false, message: "User added successfully!", data: [req.body.name, req.body.lastName] });
+    res.json({ error: false, message: "User updated successfully!", data: [req.body.name, req.body.lastName] });
   })
 })
 // Delete user by id
