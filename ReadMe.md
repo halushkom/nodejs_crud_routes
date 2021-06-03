@@ -15,10 +15,10 @@ In terminal run "mysql"
     7. Log out of MySQL by typing: \q.
 ### STEP 5
 Create file .env. Add such text:
-    DB_HOST = localhost
-    DB_USER = db_use_name
-    DB_PASSWORD = db_password
-    DB_NAME = db_name
+    *DB_HOST = localhost
+    *DB_USER = db_use_name
+    *DB_PASSWORD = db_password
+    *DB_NAME = db_name
 
 and replace "db_use_name", "db_password", "db_name"  with your attributes.
 ### STEP 6
