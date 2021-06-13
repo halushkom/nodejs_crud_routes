@@ -12,7 +12,8 @@ In terminal run `mysql`
 4. Log out of MySQL by typing: `\q`.
 5. Log in as the new database user you just created: `mysql -u newuser -p`
 6. Create a new database: `CREATE DATABASE db_name;`
-7. Log out of MySQL by typing: `\q`.
+7. Create table `CREATE TABLE <table_name> (id int NOT NULL auto_increment,name varchar(30)  NOT NULL,duration int not null , status varchar(20) not null, userID int,     PRIMARY KEY (id),     CONSTRAINT FK_project  FOREIGN KEY (userID)     REFERENCES users(id) );` and `CREATE TABLE <table_name> (id int NOT NULL auto_increment,name varchar(30)  NOT NULL,lastName varchar(30) not null ,     PRIMARY KEY (id));`
+8. Log out of MySQL by typing: `\q`.
 ### STEP 5
 Create file .env. Add such text:
 * DB_HOST = localhost
@@ -26,4 +27,4 @@ Open terminal again and run command `npm run devstart`. If everything ok in term
 ### STEP 7
 Download and instal POSTMAN
 ### STEP 8
-Open POSTMAN and try to send GET and POST requests by such address `http://localhost:3000/user`. Requests with methods PUT and DELETE should be sent to `http://localhost:3000/user/<your_ID>`
+Open POSTMAN and try to send GET and POST requests by such address `http://localhost:3000/user`. Requests with methods PUT and DELETE should be sent to `http://localhost:3000/user/<your_ID>` and `http://localhost:3000/project/<your_ID>`. If you need assign information about project to user, just copy `http://localhost:3000/user/<ID>/assign` to POSTMAN.
