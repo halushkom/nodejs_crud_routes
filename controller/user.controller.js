@@ -127,7 +127,7 @@ exports.assignProjectToUser = (req, res) => {
         .then(user => { res.json(user) })
 
 }
-exports.userDelete = (req, res) => {
+exports.userAndProjectDelete = (req, res) => {
     const id = req.params.id;
     User.destroy({ where: { id: id }, force: true })
         .then(num => {
@@ -139,4 +139,28 @@ exports.userDelete = (req, res) => {
             });
         });
     Project.destroy({ where: { userID: id }, force: true })
+}
+
+exports.deleteProjectById = (req, res) => {
+    Project.destroy({ where: { id: req.params.id } })
+        .then(project => res.json({ message: "Project has been deleted" }))
+        .catch(err => res.status(500).send({ message: "Could not delete project" }))
+}
+
+exports.updateProjectById = (req, res) => {
+    Project.update(req.body, {
+        where: { id: req.params.id }
+    })
+        .then(num => {
+            if (num == 1) {
+                res.send({
+                    message: "Project was updated successfully."
+                });
+            }
+        })
+        .catch(err => {
+            res.status(500).send({
+                message: "Error updating project with id=" + id
+            });
+        });
 }

@@ -56,6 +56,6 @@ router.put('/:id', (req, res) => {
 
 })
 // Delete user by id
-router.delete('/:id', controller.userDelete)
+router.delete('/:id', controller.userAndProjectDelete)
 
 module.exports = router;

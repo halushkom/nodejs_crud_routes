@@ -7,6 +7,8 @@ const Project = db.projects
 let controller = require('../controller/user.controller')
 
 router.get('/', controller.findAllProjects)
-router.get('/a', controller.findAll)
+router.get('/:id', controller.findProjectById)
 router.post('/', controller.createProject)
+router.delete('/:id', controller.deleteProjectById)
+router.put('/:id', controller.updateProjectById)
 module.exports = router;
